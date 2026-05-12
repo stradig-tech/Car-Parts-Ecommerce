@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATEC Electrical Engineering – Your Competent Partner</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --green: #6fdc00;
+    --green-dark: #52a800;
+    --black: #0d0d0d;
+    --white: #ffffff;
+    --gray-light: #f5f5f5;
+    --gray-dark: #555;
+    --text: #1c1c1c;
+    --section-pad: 90px 0;
+    --radius: 12px;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Barlow', sans-serif; color: var(--text); overflow-x: hidden; }
+
+  /* TOP BAR */
+  .topbar { background: #111; color: #aaa; font-size: 12px; padding: 8px 0; }
+  .topbar-inner { max-width: 1240px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+  .topbar a { color: #aaa; text-decoration: none; transition: color .2s; }
+  .topbar a:hover { color: var(--green); }
+  .topbar-left { display: flex; gap: 24px; align-items: center; }
+  .topbar-left span { display: flex; align-items: center; gap: 6px; }
+
+  /* NAVBAR */
+  nav { background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); box-shadow: 0 1px 0 rgba(0,0,0,0.08), 0 4px 24px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 999; }
+  .nav-inner { max-width: 1240px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .logo { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 800; color: var(--black); letter-spacing: 1px; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+  .logo-badge { background: var(--green); color: #000; font-size: 10px; font-weight: 800; padding: 4px 9px; border-radius: 6px; letter-spacing: 1px; text-transform: uppercase; }
+  .logo em { color: var(--green); font-style: normal; }
+  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-links a { text-decoration: none; color: #333; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; transition: color .2s; position: relative; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 2px; background: var(--green); transform: scaleX(0); transition: transform .25s; }
+  .nav-links a:hover { color: var(--black); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-inquiry { background: var(--green) !important; color: #000 !important; padding: 10px 22px; border-radius: 8px; font-weight: 700 !important; display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 14px rgba(111,220,0,0.35); transition: transform .2s, box-shadow .2s !important; }
+  .nav-inquiry:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(111,220,0,0.45) !important; color: #000 !important; }
+  .nav-inquiry::after { display: none !important; }
+
+  /* HERO */
+  .hero { position: relative; min-height: 640px; display: flex; align-items: center; overflow: hidden; }
+  .hero-img { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1800&q=80&auto=format&fit=crop'); background-size: cover; background-position: center 30%; transform: scale(1.05); animation: heroZoom 14s ease-out forwards; }
+  @keyframes heroZoom { to { transform: scale(1); } }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(8,8,8,0.91) 0%, rgba(8,8,8,0.68) 45%, rgba(8,8,8,0.18) 100%); }
+  .hero-grid { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(111,220,0,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(111,220,0,0.035) 1px, transparent 1px); background-size: 64px 64px; mask-image: linear-gradient(to right, transparent 5%, rgba(0,0,0,0.7) 40%, transparent 95%); }
+  .hero-accent { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--green) 0%, transparent 55%); }
+
+  .hero-content { position: relative; z-index: 3; max-width: 1240px; margin: 0 auto; padding: 110px 24px 200px; width: 100%; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(111,220,0,0.1); border: 1px solid rgba(111,220,0,0.28); color: var(--green); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; padding: 6px 14px; border-radius: 100px; margin-bottom: 24px; animation: fadeUp .6s ease both; }
+  .hero-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: blink 1.6s infinite; }
+  @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.25;} }
+  .hero-content h1 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(40px, 6.5vw, 76px); font-weight: 900; color: var(--white); line-height: 1.0; max-width: 600px; margin-bottom: 24px; animation: fadeUp .7s .1s ease both; }
+  .hero-content h1 em { color: var(--green); font-style: normal; display: block; }
+  .hero-content p { color: rgba(255,255,255,0.68); max-width: 440px; line-height: 1.75; font-size: 15px; margin-bottom: 38px; font-weight: 300; animation: fadeUp .7s .2s ease both; }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeUp .7s .3s ease both; }
+  .btn-hero-main { display: inline-flex; align-items: center; gap: 9px; background: var(--green); color: #000; padding: 15px 32px; border-radius: 9px; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; box-shadow: 0 8px 28px rgba(111,220,0,0.42); transition: transform .2s, box-shadow .2s; }
+  .btn-hero-main:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(111,220,0,0.55); }
+  .btn-hero-ghost { display: inline-flex; align-items: center; gap: 9px; background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.35); padding: 15px 30px; border-radius: 9px; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: border-color .2s, background .2s; }
+  .btn-hero-ghost:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.06); }
+
+  /* hero stats strip */
+  .hero-stats { position: absolute; bottom: 0; left: 0; right: 0; z-index: 3; background: rgba(8,8,8,0.78); backdrop-filter: blur(20px); border-top: 1px solid rgba(255,255,255,0.06); }
+  .hero-stats-inner { max-width: 1240px; margin: 0 auto; padding: 0 24px; display: flex; }
+  .hs { flex: 1; padding: 22px 28px; border-right: 1px solid rgba(255,255,255,0.07); display: flex; flex-direction: column; gap: 4px; }
+  .hs:last-child { border-right: none; }
+  .hs-num { font-family: 'Barlow Condensed', sans-serif; font-size: 30px; font-weight: 900; color: var(--green); line-height: 1; }
+  .hs-label { font-size: 11px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 1.2px; font-weight: 500; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* SECTION BASE */
+  .section { padding: var(--section-pad); }
+  .section-inner { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+  .eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; color: var(--green); margin-bottom: 8px; }
+  .s-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(26px, 4vw, 42px); font-weight: 800; color: var(--text); line-height: 1.05; margin-bottom: 10px; }
+  .s-sub { font-size: 15px; color: #666; max-width: 520px; line-height: 1.75; margin-bottom: 52px; }
+  .t-line { width: 36px; height: 3px; background: var(--green); border-radius: 2px; margin-bottom: 14px; }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+  @media(max-width:960px){ .services-grid { grid-template-columns: repeat(3,1fr); } }
+  @media(max-width:520px){ .services-grid { grid-template-columns: repeat(2,1fr); } }
+  .svc-card { background: var(--gray-light); border: 1.5px solid transparent; border-radius: var(--radius); padding: 30px 14px 24px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; cursor: pointer; transition: border-color .25s, box-shadow .25s, transform .25s, background .25s; position: relative; overflow: hidden; opacity: 0; }
+  .svc-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--green); transform: scaleX(0); transition: transform .3s; }
+  .svc-card:hover { border-color: rgba(111,220,0,0.3); box-shadow: 0 8px 32px rgba(111,220,0,0.12); transform: translateY(-5px); background: var(--white); }
+  .svc-card:hover::after { transform: scaleX(1); }
+  .svc-icon { width: 54px; height: 54px; background: rgba(111,220,0,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--green); transition: background .25s, color .25s; }
+  .svc-card:hover .svc-icon { background: var(--green); color: #000; }
+  .svc-icon svg { width: 26px; height: 26px; }
+  .svc-card span { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #555; line-height: 1.4; }
+
+  /* CONFIGURE */
+  .configure-section { background: linear-gradient(135deg, #0d0d0d 0%, #181818 100%); padding: 88px 0; position: relative; overflow: hidden; }
+  .configure-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(111,220,0,0.06) 0%, transparent 60%); }
+  .project-types { display: flex; flex-wrap: wrap; gap: 16px; }
+  .proj-card { background: rgba(255,255,255,0.04); border: 1.5px solid rgba(255,255,255,0.08); padding: 30px 22px; width: 168px; border-radius: var(--radius); display: flex; flex-direction: column; align-items: center; gap: 14px; cursor: pointer; transition: border-color .25s, background .25s, transform .25s; text-align: center; opacity: 0; }
+  .proj-card:hover, .proj-card.active { border-color: var(--green); background: rgba(111,220,0,0.07); transform: translateY(-4px); }
+  .proj-card svg { width: 44px; height: 44px; color: var(--green); }
+  .proj-card span { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: rgba(255,255,255,0.6); line-height: 1.4; }
+
+  /* GALLERY */
+  .gallery-section { background: #f3f3f3; padding: 60px 0; overflow: hidden; }
+  .gallery-header { max-width: 1240px; margin: 0 auto 28px; padding: 0 24px; display: flex; align-items: flex-end; justify-content: space-between; }
+  .gallery-track { display: flex; gap: 12px; padding: 4px 24px 12px; overflow-x: auto; scrollbar-width: none; max-width: 1240px; margin: 0 auto; cursor: grab; }
+  .gallery-track:active { cursor: grabbing; }
+  .gallery-track::-webkit-scrollbar { display: none; }
+  .gthumb { width: 190px; height: 190px; min-width: 190px; border-radius: 10px; overflow: hidden; position: relative; transition: transform .3s, box-shadow .3s; }
+  .gthumb:hover { transform: scale(1.05); box-shadow: 0 16px 40px rgba(0,0,0,0.2); }
+  .gthumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .gthumb-ov { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 55%); opacity: 0; transition: opacity .3s; }
+  .gthumb:hover .gthumb-ov { opacity: 1; }
+
+  /* STANDOUT */
+  .standout-section { background: var(--white); }
+  .standout-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 52px; }
+  @media(max-width:760px){ .standout-grid { grid-template-columns: repeat(2,1fr); } }
+  .so-card { background: var(--gray-light); border-radius: var(--radius); padding: 38px 26px; text-align: center; transition: box-shadow .25s, transform .25s; position: relative; overflow: hidden; opacity: 0; }
+  .so-card::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 0; height: 3px; background: var(--green); border-radius: 0 0 4px 4px; transition: width .3s; }
+  .so-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.09); transform: translateY(-5px); }
+  .so-card:hover::before { width: 60px; }
+  .so-icon { width: 64px; height: 64px; border-radius: 16px; background: rgba(111,220,0,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; color: var(--green); transition: background .25s, color .25s; }
+  .so-card:hover .so-icon { background: var(--green); color: #000; }
+  .so-icon svg { width: 28px; height: 28px; }
+  .so-card h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 17px; font-weight: 800; text-transform: uppercase; letter-spacing: .8px; color: #222; line-height: 1.3; }
+
+  /* NUMBERS */
+  .numbers-section { background: linear-gradient(135deg, #42c800 0%, var(--green) 55%, #9ef038 100%); padding: 96px 0; position: relative; overflow: hidden; }
+  .numbers-section::before { content: ''; position: absolute; inset: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"><circle cx="40" cy="40" r="38" fill="none" stroke="rgba(0,0,0,0.04)" stroke-width="1.5"/></svg>') center/80px 80px; }
+  .num-inner { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+  .num-header { text-align: center; margin-bottom: 64px; }
+  .num-header h2 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(22px, 4vw, 36px); font-weight: 900; color: rgba(0,0,0,0.82); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+  .num-header p { font-size: 14px; color: rgba(0,0,0,0.5); }
+  .num-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+  @media(max-width:600px){ .num-grid { grid-template-columns: 1fr; } }
+  .num-item { text-align: center; padding: 0 20px; border-right: 1px solid rgba(0,0,0,0.12); }
+  .num-item:last-child { border-right: none; }
+  .num-val { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(64px, 9vw, 100px); font-weight: 900; color: rgba(0,0,0,0.82); line-height: 1; }
+  .num-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: rgba(0,0,0,0.52); margin-top: 8px; }
+  .num-cta { text-align: center; margin-top: 56px; }
+  .btn-num { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.22); color: #000; border: 2px solid rgba(0,0,0,0.25); padding: 13px 30px; border-radius: 9px; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: background .2s; }
+  .btn-num:hover { background: rgba(0,0,0,0.32); }
+
+  /* CAREER */
+  .career-section { background: #0c0c0c; padding: var(--section-pad); position: relative; overflow: hidden; }
+  .career-section::before { content: ''; position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(111,220,0,0.07) 0%, transparent 70%); pointer-events: none; }
+  .career-inner { max-width: 1240px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  @media(max-width:760px){ .career-inner { grid-template-columns: 1fr; gap: 40px; } }
+  .career-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--green); margin-bottom: 16px; }
+  .career-badge svg { width: 20px; height: 20px; }
+  .c-wir { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(56px, 8vw, 92px); font-weight: 900; text-transform: uppercase; line-height: 0.92; }
+  .c-wir.g { color: var(--green); }
+  .c-wir.d { color: rgba(255,255,255,0.07); }
+  .career-right .mood { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.38); margin-bottom: 4px; }
+  .career-right .big { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(52px, 7.5vw, 84px); font-weight: 900; color: var(--green); text-transform: uppercase; line-height: 1; margin-bottom: 22px; }
+  .career-right p { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 32px; max-width: 340px; }
+  .btn-career { display: inline-flex; align-items: center; gap: 9px; background: var(--green); color: #000; padding: 14px 30px; border-radius: 9px; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; box-shadow: 0 6px 22px rgba(111,220,0,0.36); transition: transform .2s, box-shadow .2s; }
+  .btn-career:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(111,220,0,0.48); }
+
+  /* CONTACT */
+  .contact-section { padding: var(--section-pad); background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 52px; }
+  @media(max-width:620px){ .contact-grid { grid-template-columns: 1fr; } }
+  .ct-card { background: var(--gray-light); border-radius: var(--radius); padding: 44px 28px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; transition: box-shadow .25s, transform .25s; opacity: 0; }
+  .ct-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.08); transform: translateY(-4px); }
+  .ct-icon { width: 58px; height: 58px; border-radius: 14px; background: rgba(111,220,0,0.1); display: flex; align-items: center; justify-content: center; color: var(--green); }
+  .ct-icon svg { width: 26px; height: 26px; }
+  .ct-card p { font-size: 14px; color: var(--gray-dark); line-height: 1.7; }
+  .ct-card a { color: var(--gray-dark); text-decoration: none; font-weight: 600; }
+  .ct-card a:hover { color: var(--green); }
+
+  /* FOOTER */
+  footer { background: #080808; color: #444; font-size: 13px; padding: 28px 32px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .footer-links { display: flex; gap: 22px; }
+  .footer-links a { color: #444; text-decoration: none; transition: color .2s; }
+  .footer-links a:hover { color: var(--green); }
+
+  /* shared secondary btn */
+  .btn-sec { display: inline-flex; align-items: center; gap: 8px; background: #1a1a1a; color: #fff; padding: 11px 22px; border-radius: 8px; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: background .2s; }
+  .btn-sec:hover { background: #333; }
+  .btn-gray { display: inline-flex; align-items: center; gap: 8px; background: #e0e0e0; color: #111; padding: 13px 28px; border-radius: 9px; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: background .2s; }
+  .btn-gray:hover { background: #ccc; }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #f0f0f0; }
+  ::-webkit-scrollbar-thumb { background: var(--green); border-radius: 3px; }
+
+  @media(max-width:760px){
+    .hero-stats-inner { flex-direction: column; }
+    .hs { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 16px 24px; }
+    .hs:last-child { border-bottom: none; }
+    .nav-links { display: none; }
+    .hero-content { padding: 80px 24px 280px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <span>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        06359/9170505
+      </span>
+      <span>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 5H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+        Monday to Saturday – by appointment
+      </span>
+    </div>
+    <a href="mailto:info@atec-elektrotechnik.de">✉&ensp;info@atec-elektrotechnik.de</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-badge">LOGO</span>
+      ATEC <em>Electrical</em>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#">Homepage</a></li>
+      <li><a href="#">Team ▾</a></li>
+      <li><a href="#">About Us</a></li>
+      <li>
+        <a href="#contact" class="nav-inquiry">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+          Inquiry
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-accent"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">
+      <span class="hero-dot"></span>
+      Electrical Engineering Specialists
+    </div>
+    <h1>Your competent partner for <em>electrical engineering</em></h1>
+    <p>To achieve maximum performance while maintaining low energy consumption, expert advice and solutions from a specialist in electrical installations are required.</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-hero-main">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        Discover Our Services
+      </a>
+      <a href="#contact" class="btn-hero-ghost">
+        Get a Free Quote
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stats-inner">
+      <div class="hs">
+        <div class="hs-num">8+</div>
+        <div class="hs-label">Expert Employees</div>
+      </div>
+      <div class="hs">
+        <div class="hs-num">8</div>
+        <div class="hs-label">Years Experience</div>
+      </div>
+      <div class="hs">
+        <div class="hs-num">1200+</div>
+        <div class="hs-label">Happy Customers</div>
+      </div>
+      <div class="hs">
+        <div class="hs-num">100%</div>
+        <div class="hs-label">Quality Guaranteed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services" style="background:#fff;">
+  <div class="section-inner">
+    <div class="eyebrow">What We Do</div>
+    <div class="t-line"></div>
+    <h2 class="s-title">Our Services</h2>
+    <p class="s-sub">Professional electrical solutions for residential, commercial and industrial clients across the region.</p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg></div>
+        <span>Electrical Installation</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.237 4.237 0 0 0-6 0zm-4-4l2 2a7.074 7.074 0 0 1 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg></div>
+        <span>SAT Single / Multi-User</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg></div>
+        <span>Large Plant</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></div>
+        <span>Hospitality / Hotel TV</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div>
+        <span>Smart Building Technology</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 19.98 3.04 21.4 5 22 5.5 20.5 7 16 11 14 17 14v4l5-5-5-5v4z"/></svg></div>
+        <span>Climate</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONFIGURE -->
+<section class="configure-section">
+  <div class="section-inner">
+    <div class="eyebrow" style="color:var(--green);">Get Started</div>
+    <div class="t-line" style="background:rgba(111,220,0,0.35)"></div>
+    <h2 class="s-title" style="color:#fff;margin-bottom:8px;">Configure your request</h2>
+    <p class="s-sub" style="color:rgba(255,255,255,0.42);">What kind of project can we help you with today?</p>
+    <div class="project-types">
+      <div class="proj-card active" onclick="setActive(this)">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        <span>New construction &amp; renovation</span>
+      </div>
+      <div class="proj-card" onclick="setActive(this)">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+        <span>Industry</span>
+      </div>
+      <div class="proj-card" onclick="setActive(this)">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+        <span>Service &amp; Installation</span>
+      </div>
+      <div class="proj-card" onclick="setActive(this)">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+        <span>Individual offer</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section">
+  <div class="gallery-header">
+    <div>
+      <div class="eyebrow">Our Projects</div>
+      <div class="t-line"></div>
+    </div>
+    <a href="#" class="btn-sec">View All Work</a>
+  </div>
+  <div class="gallery-track" id="galleryTrack">
+    <div class="gthumb"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80&auto=format&fit=crop" alt="Electrical installation"><div class="gthumb-ov"></div></div>
+    <div class="gthumb"><img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&q=80&auto=format&fit=crop" alt="Panel wiring"><div class="gthumb-ov"></div></div>
+    <div class="gthumb"><img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&q=80&auto=format&fit=crop" alt="Industrial project"><div class="gthumb-ov"></div></div>
+    <div class="gthumb"><img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&q=80&auto=format&fit=crop" alt="Smart building"><div class="gthumb-ov"></div></div>
+    <div class="gthumb"><img src="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=400&q=80&auto=format&fit=crop" alt="Renovation"><div class="gthumb-ov"></div></div>
+    <div class="gthumb"><img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=400&q=80&auto=format&fit=crop" alt="Field work"><div class="gthumb-ov"></div></div>
+    <div class="gthumb"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80&auto=format&fit=crop" alt="Office electrical"><div class="gthumb-ov"></div></div>
+    <div class="gthumb"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=400&q=80&auto=format&fit=crop" alt="Commercial project"><div class="gthumb-ov"></div></div>
+  </div>
+</section>
+
+<!-- STAND OUT -->
+<section class="section standout-section">
+  <div class="section-inner">
+    <div class="eyebrow">Why Choose Us</div>
+    <div class="t-line"></div>
+    <h2 class="s-title">What makes us stand out?</h2>
+    <p class="s-sub">We combine technical expertise with outstanding customer service to deliver results that exceed expectations every time.</p>
+    <div class="standout-grid">
+      <div class="so-card">
+        <div class="so-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>
+        <h4>Fixed Offer</h4>
+      </div>
+      <div class="so-card">
+        <div class="so-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4c1.4 0 2.8 1.1 2.8 2.5S13.4 10 12 10s-2.8-1.1-2.8-2.5S10.6 5 12 5zm4.8 12H7.2v-1.2c0-1.6 3.2-2.4 4.8-2.4s4.8.8 4.8 2.4V17z"/></svg></div>
+        <h4>Quality &amp; Safety</h4>
+      </div>
+      <div class="so-card">
+        <div class="so-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg></div>
+        <h4>Customer advice &amp; service</h4>
+      </div>
+      <div class="so-card">
+        <div class="so-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
+        <h4>Best price-performance ratio</h4>
+      </div>
+    </div>
+    <div style="text-align:center">
+      <a href="#" class="btn-sec" style="padding:13px 28px;font-size:13px;">Learn More About Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="numbers-section">
+  <div class="num-inner">
+    <div class="num-header">
+      <h2>ATEC Electrical Engineering in Figures</h2>
+      <p>A track record built on trust, expertise and thousands of successful projects</p>
+    </div>
+    <div class="num-grid">
+      <div class="num-item">
+        <div class="num-val" data-target="8">0</div>
+        <div class="num-label">Motivated Employees</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val" data-target="8">0</div>
+        <div class="num-label">Years of Business Existence</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val" data-target="1200">0</div>
+        <div class="num-label">Satisfied Regular Customers</div>
+      </div>
+    </div>
+    <div class="num-cta">
+      <a href="#" class="btn-num">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER -->
+<section class="career-section">
+  <div class="career-inner">
+    <div>
+      <div class="career-badge">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        We Are Hiring
+      </div>
+      <div>
+        <div class="c-wir g">WIR</div>
+        <div class="c-wir d">SUCHEN</div>
+        <div class="c-wir g">DICH!</div>
+      </div>
+    </div>
+    <div class="career-right">
+      <div class="mood">In the mood for</div>
+      <div class="big">CAREER?</div>
+      <p>Develop your talents, achieve your goals and become part of our innovative and passionate team.</p>
+      <a href="#" class="btn-career">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        View Open Positions
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-inner">
+    <div class="eyebrow">Reach Us</div>
+    <div class="t-line"></div>
+    <h2 class="s-title">Contact Details</h2>
+    <p class="s-sub">We're available Monday to Saturday by appointment. Reach out — we look forward to hearing from you.</p>
+    <div class="contact-grid">
+      <div class="ct-card">
+        <div class="ct-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+        <p><strong>Siemensstr. 1</strong><br>67269 Grünstadt</p>
+      </div>
+      <div class="ct-card">
+        <div class="ct-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></div>
+        <p><a href="tel:06359/9170505"><strong>06359/9170505</strong></a></p>
+      </div>
+      <div class="ct-card">
+        <div class="ct-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+        <p><a href="mailto:info@atec-elektrotechnik.de"><strong>info@atec-elektrotechnik.de</strong></a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Imprint</a>
+  </div>
+  <span>© 2024 ATEC Elektrotechnik – All rights reserved</span>
+</footer>
+
+<script>
+  // project card active
+  function setActive(el) {
+    document.querySelectorAll('.proj-card').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  // Gallery drag
+  const track = document.getElementById('galleryTrack');
+  let isDown=false,startX,scrollLeft;
+  track.addEventListener('mousedown',e=>{isDown=true;startX=e.pageX-track.offsetLeft;scrollLeft=track.scrollLeft;});
+  document.addEventListener('mouseup',()=>{isDown=false;});
+  track.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault();const x=e.pageX-track.offsetLeft;track.scrollLeft=scrollLeft-(x-startX)*1.5;});
+
+  // Count-up
+  const nums=document.querySelectorAll('.num-val[data-target]');
+  const cObs=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const el=entry.target,target=parseInt(el.dataset.target);
+        let current=0;
+        const timer=setInterval(()=>{
+          current=Math.min(current+Math.ceil(target/60),target);
+          el.textContent=current;
+          if(current>=target)clearInterval(timer);
+        },20);
+        cObs.unobserve(el);
+      }
+    });
+  },{threshold:0.5});
+  nums.forEach(n=>cObs.observe(n));
+
+  // Scroll reveal
+  const revEls=document.querySelectorAll('.svc-card,.so-card,.ct-card,.proj-card');
+  const rObs=new IntersectionObserver(entries=>{
+    entries.forEach((entry,i)=>{
+      if(entry.isIntersecting){
+        setTimeout(()=>{
+          entry.target.style.animation='fadeUp 0.5s ease forwards';
+        },i*55);
+        rObs.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.1});
+  revEls.forEach(el=>rObs.observe(el));
+</script>
+</body>
+</html>
